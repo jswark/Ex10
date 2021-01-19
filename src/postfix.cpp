@@ -14,7 +14,6 @@ int priority(char c) {
 }
 
 std::string infix2postfix(std::string infix) {
-
   std::string rpn = {};
   MyStack<char> steck(100);
 
@@ -31,11 +30,10 @@ std::string infix2postfix(std::string infix) {
                    infix[i] >= '0' ||
                infix[i + 1] == '.' || infix[i] == '.') {
       rpn += infix[i];
-    } else if (infix[i] == ' ')
+    } else if (infix[i] == ' ') {
       continue;
-
-    // 2
-    else if (infix[i] == ')') {
+    } else if (infix[i] == ')')
+    {
       while (steck.isEmpty() == 0 && steck.top() != '(') {
         auto op = steck.top();
         steck.pop();
@@ -46,13 +44,9 @@ std::string infix2postfix(std::string infix) {
       if (steck.top() == '(') {
         steck.pop();
       }
-    }
-    // 3
-    else if (infix[i] == '(')
+    } else if (infix[i] == '(') {
       steck.push('(');
-
-    // last
-    else {
+    } else {
       while (steck.isEmpty() == 0 &&
              priority(steck.top()) >= priority(infix[i])) {
         auto op = steck.top();
@@ -63,7 +57,7 @@ std::string infix2postfix(std::string infix) {
       steck.push(infix[i]);
     }
   }
-  // else
+
   while (steck.isEmpty() == 0) {
     auto op = steck.top();
     steck.pop();

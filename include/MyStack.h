@@ -4,12 +4,12 @@
 
 template <typename T>
 class MyStack {
-private:
+ private:
   T *stack;
   unsigned int capacity;
   unsigned int top_el;
 
-public:
+ public:
   explicit MyStack(unsigned int new_capacity)
       : top_el(-1), capacity(new_capacity), stack(new T[new_capacity]) {}
 
@@ -59,4 +59,4 @@ public:
   bool isEmpty() const { return this->top_el == -1; }
 };
 
-#endif // INCLUDE_MYSTACK_H_
+#endif  // INCLUDE_MYSTACK_H_
