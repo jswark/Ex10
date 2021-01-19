@@ -32,8 +32,7 @@ std::string infix2postfix(std::string infix) {
       rpn += infix[i];
     } else if (infix[i] == ' ') {
       continue;
-    } else if (infix[i] == ')')
-    {
+    } else if (infix[i] == ')') {
       while (steck.isEmpty() == 0 && steck.top() != '(') {
         auto op = steck.top();
         steck.pop();
@@ -44,6 +43,7 @@ std::string infix2postfix(std::string infix) {
       if (steck.top() == '(') {
         steck.pop();
       }
+      
     } else if (infix[i] == '(') {
       steck.push('(');
     } else {
